@@ -1,17 +1,18 @@
 <script setup>
 import UIkit from 'uikit'
 
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useLogsStore } from '../stores/logs';
 
 const store = useLogsStore();
 const props = defineProps(['propLog', 'propExercise']);
 const exercise = ref({
-    name: '',
-    sets: 0,
-    reps: 0,
-    weight: 0
+   
 });
+
+watch(props, () => {
+    exercise.value = props.propExercise;
+})
 
 function updateExercise() {
     let obj = { ...exercise.value };
@@ -22,10 +23,10 @@ function updateExercise() {
         reps: 0,
         weight: 0
     };
+    hide();
 }
 
 function show() {
-    exercise.value = props.propExercise;
     UIkit.modal('#edit-exercise-modal').show();
 }
 

@@ -111,8 +111,9 @@ export const useLogsStore = defineStore('logs', () => {
     exercise.reps = reps
     exercise.weight = weight
 
+    const index = exerciseStore.getExerciseIndex(log.exercises, exerciseId);
     //@TODO Test this!
-    log.exercises[exerciseId] = exercise
+    log.exercises[index] = exercise
   }
 
   function deleteExercise(logId, exerciseId) {

@@ -33,5 +33,19 @@ export const useExerciseStore = defineStore('exercises', () => {
     }
   }
 
-  return { createExercise, getExercise }
+  function getExerciseIndex(exercises, id) {
+    id = parseInt(id);
+
+    let index = exercises.findIndex(exercise => {
+      return exercise.exerciseId === id;
+    });
+
+    if(index === -1) {
+      throw new Error('Exercise not found');
+    } 
+
+    return index;
+  }
+
+  return { createExercise, getExercise, getExerciseIndex }
 })

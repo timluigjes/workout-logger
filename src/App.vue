@@ -18,7 +18,7 @@ const route = useRoute();
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> 
   </header>
 
   <RouterView />
